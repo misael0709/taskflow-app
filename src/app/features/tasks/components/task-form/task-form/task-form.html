@@ -1,0 +1,29 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-field">
+        <label>Titulo *</label>
+        <input formControlName="title" type="text" placeholder="Nombre de la tarea">
+        @if(form.get('title')?.touched){
+        <span class="error">
+            {{ titleError }}
+        </span>
+        }
+    </div>
+    <br />
+    <div class="form-field">
+        <label>Descripción</label>
+        <textarea formControlName="description"></textarea>
+    </div>
+    <br />
+    <div class="form-field">
+        <label>Estado</label>
+        <select formControlName="status">
+            <option value="pending">Pendiente</option>
+            <option value="in-progress">En progreso</option>
+            <option value="done">Completada</option>
+        </select>
+    </div>
+    <p>
+        <button type="submit" [disabled]="form.invalid">Guardar</button>
+        <button type="button" (click)="onCancel()">Cancelar</button>
+    </p>
+</form>
