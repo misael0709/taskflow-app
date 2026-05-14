@@ -19,4 +19,9 @@ describe('TaskList', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('debe mostrar el número de tareas en el encabezado', () => {
+    const h2 = fixture.nativeElement.querySelector('h2');
+    expect(h2?.textContent).toContain('3');
+  });
 });
