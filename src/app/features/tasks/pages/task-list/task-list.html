@@ -1,19 +1,32 @@
 <!-- task-list.component.html -->
-<section class="task-list">
-      <h2>Mis Tareas ({{ tasks().length }})</h2>
-
-    @for (task of tasks(); track task.id){
-      <div class="task-card">
-            <h3>{{ task.title }}</h3>
-            <p>{{ task.description }}</p>
-            <span [class]="'badge badge--' + task.status">
-                  {{ task.status | titlecase }}
-                </span>
-          </div>
-        }@empty {
-        <p>No hay elementos</p>
-        }
-    <div>
-        <button (click)="irAgregar()">Agregar tarea</button>
-    </div>
-</section>
+<section>
+    <h2>Mis Tareas ({{ tasks().length }})</h2>
+    <table border="1">
+        <!-- Cabecera de la tabla -->
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Estatus</th>
+            </tr>
+        </thead>
+        <!-- Cuerpo de la tabla -->
+        <tbody>
+            @for (task of tasks(); track task.id){
+            <tr>
+                <td>{{ task.title | uppercase }}</td>
+                <td>{{ task.description }}</td>
+                <td>
+                    <span [class]="'badge badge--' + task.status">
+                        {{ task.status | titlecase }}
+                    </span>
+                </td>
+            </tr>
+            }@empty {
+            <tr>No hay tareas aún. ¡Crea la primera!</tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <button (click)="agregarTarea()">Agregar tarea</button>
+</section> 

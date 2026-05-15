@@ -19,6 +19,7 @@ export class TaskListComponent implements OnInit {
     tasks = signal<Task[]>([]);
     loading = signal(false);
     error = signal<string | null>(null);
+    
     ngOnInit(): void {
         this.loadTasks();
     }
@@ -38,5 +39,14 @@ export class TaskListComponent implements OnInit {
     irAgregar() {
         // Lógica adicional aquí
         this.router.navigate(['/form']);
+    }
+
+    agregarTarea() {
+        const task: Task = {
+            title: 'Tarea API', description: 'Tarea cargada desde el API mock',
+            status: 'pending'
+        }
+        this.api.create(task).subscribe(data => console.log(data))
+        this.loadTasks();
     }
 }

@@ -1,9 +1,9 @@
 export type TaskStatus = 'pending' |'in-progress' |'done';
 export interface Task {
-    id:number;
+    id?:number;
     title:string;
     description: string;
     status: TaskStatus;
-    createdAt: Date;
+    createdAt?: Date;
     dueDate?: Date;
 }

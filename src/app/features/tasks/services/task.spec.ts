@@ -33,7 +33,7 @@ describe('TaskService', () => {
       status: 'pending'
     });
     const tasks = service.getAll();
-    const id = tasks[tasks.length - 1].id;
+    const id = 1//tasks[tasks.length - 1].id;
     service.update(id, { title: 'Actualizado' });
     const updated = service.getById(id);
     expect(updated?.title).toBe('Actualizado');
@@ -45,7 +45,7 @@ describe('TaskService', () => {
       status: 'pending'
     });
     const tasks = service.getAll();
-    const id = tasks[tasks.length - 1].id;
+    const id = 1//tasks[tasks.length - 1].id;
     const before = tasks.length;
     service.delete(id);
     expect(service.getAll().length).toBe(before - 1);

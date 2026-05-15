@@ -7,7 +7,7 @@ import { Task } from '../models/task';
 
 export class TaskApi {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/tasks';
+  private apiUrl = 'http://localhost:3000/api/tasks';
 
   getAll(): Observable<Task[]> {
     return this.http.get<Task[]>(this.apiUrl);

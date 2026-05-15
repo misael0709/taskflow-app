@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './core/guards/auth-guard';
 export const routes: Routes = [{
     path: '',
     redirectTo: 'tasks',
@@ -22,7 +23,8 @@ export const routes: Routes = [{
 {
     path: 'tasks/new',
     loadComponent: () => import('./features/tasks/pages/task-create/task-create/task-create')
-        .then(m => m.TaskCreate)
+        .then(m => m.TaskCreate),
+        canActivate: [authGuard]
 },
 
 {
@@ -30,12 +32,12 @@ export const routes: Routes = [{
     loadComponent: () => import('./features/tasks/pages/task-edit/task-edit/task-edit')
         .then(m => m.TaskEdit)
 },
-
+/*
 {
     path: 'tasks/:id',
     loadComponent: () => import('./features/tasks/pages/task-detail/task-detail/task-detail')
         .then(m => m.TaskDetail)
-},
+},*/
 
 { path: '**', redirectTo: 'tasks' }
 ];
