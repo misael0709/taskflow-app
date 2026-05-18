@@ -41,6 +41,14 @@ export class TaskListComponent implements OnInit {
         this.router.navigate(['/form']);
     }
 
+    verDetalle(id: number | undefined): void {
+        if (id == null) {
+            this.error.set('Id de tarea inválido');
+            return;
+        }
+        this.router.navigate(['/tasks', id]);
+    }
+
     agregarTarea() {
         const task: Task = {
             title: 'Tarea API', description: 'Tarea cargada desde el API mock',

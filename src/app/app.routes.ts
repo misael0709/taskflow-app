@@ -32,12 +32,13 @@ export const routes: Routes = [{
     loadComponent: () => import('./features/tasks/pages/task-edit/task-edit/task-edit')
         .then(m => m.TaskEdit)
 },
-/*
+
+
 {
     path: 'tasks/:id',
     loadComponent: () => import('./features/tasks/pages/task-detail/task-detail/task-detail')
         .then(m => m.TaskDetail)
-},*/
+},
 
 { path: '**', redirectTo: 'tasks' }
 ];

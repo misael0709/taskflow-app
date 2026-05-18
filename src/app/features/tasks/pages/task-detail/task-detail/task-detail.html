@@ -1,1 +1,22 @@
-<p>task-detail works!</p>
+<p>Detalle de la tarea "{{ titulo }}"</p>
+
+<table border="1">
+    <!-- Cabecera de la tabla -->
+    <thead>
+        <tr>
+            <th>Descripcion</th>
+            <th>Estatus</th>
+        </tr>
+    </thead>
+    <!-- Cuerpo de la tabla -->
+    <tbody>
+        <tr>
+            <td>{{ descripcion }}</td>
+            <td>
+                <span [class]="'badge badge--' + estatus"> {{ estatus }} </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<button (click)="regresar()">Regresar</button>

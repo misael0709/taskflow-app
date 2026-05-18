@@ -8,6 +8,7 @@
                 <th>Titulo</th>
                 <th>Descripcion</th>
                 <th>Estatus</th>
+                <th>Detalle</th>
             </tr>
         </thead>
         <!-- Cuerpo de la tabla -->
@@ -21,6 +22,7 @@
                         {{ task.status | titlecase }}
                     </span>
                 </td>
+                <td><button (click)="verDetalle(task.id)">Ver Detalle</button></td>
             </tr>
             }@empty {
             <tr>No hay tareas aún. ¡Crea la primera!</tr>

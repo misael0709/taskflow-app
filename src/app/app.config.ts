@@ -9,8 +9,8 @@ import { TestData } from './test-data';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes), provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch()),
+    provideRouter(routes),
+    provideHttpClient(),
     importProvidersFrom(InMemoryWebApiModule.forRoot(TestData, { delay: 2000 }))
   ]
 };
