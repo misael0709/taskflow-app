@@ -1,5 +1,5 @@
-import { Component, inject, signal, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, signal, OnInit, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { TaskService } from '../../services/task';
 import { Task } from '../../models/task';
 import { Router } from '@angular/router';
@@ -16,12 +16,16 @@ export class TaskListComponent implements OnInit {
     private api = inject(TaskApi);
     private taskService = inject(TaskService);
     private router = inject(Router);
+    plataformId = inject(PLATFORM_ID);
     tasks = signal<Task[]>([]);
     loading = signal(false);
     error = signal<string | null>(null);
     
     ngOnInit(): void {
         this.loadTasks();
+        if (isPlatformBrowser(this.plataformId)) {
+            localStorage.setItem('taskflow_user', 'pruebaValorLocalStorage');
+        }
     }
 
     loadTasks(): void {
